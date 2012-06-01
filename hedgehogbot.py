@@ -44,6 +44,7 @@ The known commands are:
 import irc.bot, simpl, config
 from util import *
 from irc.client import nm_to_n, irc_lower, ip_numstr_to_quad, ip_quad_to_numstr
+from os import system
 
 lastUpdated = file_get_contents('hook.txt')
 
@@ -71,9 +72,10 @@ class HedgehogBot(irc.bot.SingleServerIRCBot):
 	global lastUpdated
 	if file_get_contents('hook.txt') != lastUpdated:
 		lastUpdated = file_get_contents('hook.txt')
-		subprocess.Popen(['git pull'])
+		system('git pull')
 		out = self.prolog.communicate("['hedgehogbot.pl'].")
-		print 'Git updated! Reloaded prolog scripts...', out
+		print 'Git updated! Reloaded prolog scripts...'
+		print out
 
         a = e.arguments()[0].split(":", 1)
         if len(a) > 1 and irc_lower(a[0]) == irc_lower(self.connection.get_nickname()):

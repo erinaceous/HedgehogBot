@@ -6,7 +6,7 @@
 % fact(subject,qualifier,subject).
 % where qualifier is a word like 'is' or 'causes'.
 
-dynamic(fact/3).
+:- dynamic(fact/3).
 
 fact(descartes,wrote,tractatus).
 fact(edison,invented,fire).

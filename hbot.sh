@@ -1,2 +1,2 @@
 #!/bin/bash
-python hedgehogbot.py irc.aberwiki.org "#42" HedgehogBot
+python -OO hedgehogbot.py irc.aberwiki.org "#HogCentral" HedgehogBot

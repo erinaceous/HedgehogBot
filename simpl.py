@@ -3,7 +3,7 @@ import pexpect
 
 class Prolog:
 	def __init__(self):
-		self.process = pexpect.spawn('swipl -q --nosignals -O --tty -s hedgehogbot.pl -x hog.state')
+		self.process = pexpect.spawn('swipl -x hog.state -q --nosignals -O --tty -s hedgehogbot.pl')
 		self.process.expect(".*")
 		print self.process.after
 

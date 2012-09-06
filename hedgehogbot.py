@@ -30,6 +30,8 @@ The known commands are:
 
     !pl statement -- run a raw prolog statement. only runs once you add the final '.'
 
+    !restart -- restart the prolog side of the bot, in case it's crashed.
+
     !say statement -- say something (apologise for spamming up channels with 'false.')
 
     !fact data,of,fact -- add a fact to the database. all facts must be of form:
@@ -85,9 +87,16 @@ class HedgehogBot(irc.bot.SingleServerIRCBot):
 		    self.eval_command(c, e, e.arguments()[0][3:])
 	elif e.arguments()[0][:4] == "!say":
 	    c.privmsg(self.channel, e.arguments()[0][5:])
+	elif e.arguments()[0].startswith("!restart"):
+	    if nm_to_n(e.source()).lower() in self.admins:
+		    #c.privmsg("Restarting prolog side...")
+	            print "Restarting prolog side..."
+		    self.prolog.restart()
 	elif e.arguments()[0][:5] == "!fact":
 	    fact = "assert(fact("+e.arguments()[0][6:]+")). remember."
 	    self.eval_command(c, e, fact)
+	elif "om" in e.arguments()[0] and "nom" in e.arguments()[0]:
+		c.privmsg(self.channel, simpl.omnom())
         return
 
     def on_dccmsg(self, c, e):

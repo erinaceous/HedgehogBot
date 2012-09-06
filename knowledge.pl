@@ -69,7 +69,7 @@ fact(X,cause,Y) :- fact(X,caused,Y).
 fact(X,causes,Y) :- fact(X,cause,Y).
 fact(X,caused,Y) :- fact(X,cause,Y).
 fact(X,equals,Y) :- fact(X,is,Y).
-fact(X,are,Y) :- fact(X,is,Y).
-fact(X,were,Y) :- fact(X,is,Y).
+% fact(X,are,Y) :- fact(X,is,Y).
+% fact(X,were,Y) :- fact(X,is,Y).
 fact(X,could,Y) :- fact(X,can,Y).
 fact(X,border,Y) :- fact(X,borders,Y).
